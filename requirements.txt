@@ -5,3 +5,5 @@ langchain
 langchain-google-genai
 python-dotenv
 langgraph-checkpoint-sqlite
+python-multipart
+pydantic[email]
