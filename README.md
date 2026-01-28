@@ -44,7 +44,24 @@ PIP_Blog_mng_syt/
 ### Prerequisites
 
 - Python 3.12 or higher
-- pip or uv package manager
+- uv package manager
+
+#### Installing uv
+
+**macOS:**
+```bash
+# Using Homebrew (recommended)
+brew install uv
+
+# Or using the installation script
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+**Windows:**
+```powershell
+# Using PowerShell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
 
 ### Installation
 
@@ -56,18 +73,36 @@ cd PIP_Blog_mng_syt
 
 2. Install dependencies:
 ```bash
-# Using pip
-pip install -r requirements.txt
-
-# Or using uv
 uv sync
 ```
+
+This will create a virtual environment and install all dependencies from `pyproject.toml`.
 
 3. Set up environment variables (if needed):
 Create a `.env` file in the root directory for any required environment variables (e.g., API keys for AI chat).
 
 4. Run the application:
+
+**macOS/Linux:**
 ```bash
+uv run uvicorn main:app --reload
+```
+
+**Windows:**
+```powershell
+uv run uvicorn main:app --reload
+```
+
+Alternatively, you can activate the virtual environment and run directly:
+```bash
+# Activate the virtual environment (created by uv sync)
+# macOS/Linux:
+source .venv/bin/activate
+
+# Windows:
+.venv\Scripts\activate
+
+# Then run:
 uvicorn main:app --reload
 ```
 
@@ -151,6 +186,4 @@ The application uses SQLite database (`blog_mng.db`) which is automatically crea
 
 The application uses SQLAlchemy ORM for database operations and Pydantic for data validation. Database models are defined in `models.py` and schemas are defined in `schema.py`.
 
-## License
 
-[Add your license information here]
